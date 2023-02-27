@@ -15,13 +15,13 @@ export function ContactList() {
     <List>
       {contacts
         .sort((a, b) => a.name.localeCompare(b.name))
-        .map(({ name, phone, id }) => {
+        .map(({ name, number, id }) => {
           return (
             <Item key={id}>
               <p>
                 <b>{name}:</b>{' '}
               </p>{' '}
-              <p>{phone}</p>
+              <p>{number}</p>
               <Button onClick={() => handleDelete(id)}>Delete</Button>
             </Item>
           );
