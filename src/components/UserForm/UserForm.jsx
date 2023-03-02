@@ -1,15 +1,18 @@
 import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
-import { useSelector } from 'react-redux';
-import { selectStatus } from 'redux/user/selectors';
-import { Loader } from 'components/Loader/Loader'; 
-import { StyledForm } from './UserForm.styled';
+
+import {
+  StyledForm,
+  Paragraph,
+  Floatlabel,
+  Input,
+  Button,
+} from './UserForm.styled';
 
 function UserForm({ onSubmit, isLoginForm = false }) {
   const nameInputRef = useRef();
   const emailInputRef = useRef();
   const passwordInputRef = useRef();
-  const status = useSelector(selectStatus);
 
   const handleSubmit = event => {
     event.preventDefault();
@@ -28,43 +31,35 @@ function UserForm({ onSubmit, isLoginForm = false }) {
     <StyledForm onSubmit={handleSubmit}>
       <h2 className="form-title">{isLoginForm ? 'Sign In' : 'Sign Up'}</h2>
       {isLoginForm ? null : (
-        <label className="input-group">
-          <span>Ім'я: </span>
-          <input
-            type="text"
-            name="name"
-            placeholder={"Введіть ім'я"}
-            ref={nameInputRef}
-            required
-          />
-        </label>
+        <Paragraph>
+          <Floatlabel className="floatLabel" htmlFor="name">
+            Name
+          </Floatlabel>
+          <Input type="text" name="name" ref={nameInputRef} required />
+        </Paragraph>
       )}
-      <label className="input-group">
-        <span>Емейл: </span>
-        <input
-          type="email"
-          name="email"
-          placeholder={'Введіть cвій e-mail'}
-          ref={emailInputRef}
-          required
-        />
-      </label>
-      <label className="input-group">
-        <span>Пароль: </span>
-        <input
+      <Paragraph>
+        <Floatlabel className="floatLabel" htmlFor="email">
+          Email
+        </Floatlabel>
+        <Input type="email" name="email" ref={emailInputRef} required />
+      </Paragraph>
+      <Paragraph>
+        <Floatlabel className="floatLabel" htmlFor="password">
+          Password
+        </Floatlabel>
+        <Input
           type="password"
           name="password"
           minLength={7}
-          placeholder={'Введіть пароль'}
           ref={passwordInputRef}
           required
         />
-      </label>
+      </Paragraph>
 
-      <button disabled={status === 'pending'} type="submit">
-      {isLoginForm ? 'Sign In' : 'Sign Up'}
-      </button>
-      {status === 'pending' && <Loader />}
+      <Button type="submit">
+        {isLoginForm ? 'Sign In' : 'Create My Account'}
+      </Button>
     </StyledForm>
   );
 }

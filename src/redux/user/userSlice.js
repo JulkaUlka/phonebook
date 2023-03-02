@@ -38,7 +38,6 @@ const userSlice = createSlice({
       })
       .addCase(refreshUser.pending, state => {
         state.isRefreshing = true;
-        
       })
       .addCase(refreshUser.rejected, state => {
         state.isRefreshing = false;

@@ -1,14 +1,12 @@
-import { Container, Title } from "./Home.styled";
+import { Container, Title, ImAddressBookStyled, Block } from "./Home.styled";
 
 export default function Home() {
     return (
       <Container>
-        <Title>
-          Welcome page{' '}
-          <span role="img" aria-label="Greeting icon">
-            💁‍♀️
-          </span>
+        <Title className="tracking-out-expand">
+          Welcome to your personal phonebook!
         </Title>
+        <Block><ImAddressBookStyled className="roll-in-left"/></Block>
       </Container>
     );
   }

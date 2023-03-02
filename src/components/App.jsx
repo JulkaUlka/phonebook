@@ -1,12 +1,13 @@
 import { useDispatch } from 'react-redux';
 import { useEffect, lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
-
+import { Loader } from './Loader/Loader';
 import { Navbar } from './Navbar/Navbar';
 
 import { refreshUser } from 'redux/user/operations';
 import { RestrictedRoute } from './RestrictedRoute';
 import { PrivateRoute } from './PrivateRoute';
+import { useAuth } from 'hooks/useAuth';
 
 const Home = lazy(() => import('../pages/Home/Home'));
 const Register = lazy(() => import('../pages/Register/Register'));
@@ -16,14 +17,16 @@ const Contacts = lazy(() => import('../pages/Contacts/Contacts'));
 
 export const App = () => {
   const dispatch = useDispatch();
- 
+  const { isRefreshing } = useAuth();
 
   useEffect(() => {
     dispatch(refreshUser());
   }, [dispatch]);
-  return  (
+  return  isRefreshing ? (
+< Loader/>
+ ) : (
     <>
-     <Suspense fallback={<div>Loading...</div>}>
+     <Suspense fallback={<Loader/>}>
     <Routes>
       <Route path="/" element={<Navbar />}>
       <Route index element={<Home />} />

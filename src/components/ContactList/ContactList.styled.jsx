@@ -1,29 +1,32 @@
 import styled from 'styled-components';
 
-
 export const Button = styled.button`
-  background-color: #cf3535;
-  color: white;
-  margin-left: 20px;
-  padding: 5px;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  border-radius: 10px;
-  font-weight: 600;
-  text-transform: capitalize;
-  
-  &:hover {
-   background-color : #e91e63;
-  }
+background: orange;
+box-shadow: 0 3px 0 0 grey;
+border-radius: 2px;
+border: none;
+color: #fff;
+cursor: pointer;
+outline: none;
+padding: 10px 15px;
+text-shadow: 0 1px #68b25b;
+&:hover,
+ &:focus {
+ background-color :#5b9962 ;
+ 
+}
 `;
-export const List = styled.ul`
-display: flex;
-flex-direction: column;
 
-gap: 0.5em;`;
+
+export const List = styled.ul`
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  gap: 0.5em;
+`;
 export const Item = styled.li`
-display: flex;
-justify-content: space-between;
-width: 30%;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #dbdbdb;
+  padding: 0.5em;
 `;

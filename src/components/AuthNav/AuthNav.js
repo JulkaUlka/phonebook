@@ -1,7 +1,7 @@
-import { NavLink } from 'react-router-dom';
 import { logOut } from 'redux/user/operations';
 import { useDispatch } from 'react-redux';
 import { useAuth } from 'hooks/useAuth';
+import { Wrapper, WelcomeTitle, NavLinkStyled, Button } from './AuthNav.styled';
 
 export const AuthNav = () => {
   const dispatch = useDispatch();
@@ -11,16 +11,12 @@ export const AuthNav = () => {
     dispatch(logOut());
   };
   return (
-    <div>
-      <ul>
-        <li>
-          <NavLink to="contacts">Phonebook</NavLink>
-        </li>
-      </ul>
-      <p>Welcome, {user.name}</p>
-      <button type="button" onClick={handleLogout}>
+    <Wrapper>
+      <NavLinkStyled to="contacts">Phonebook</NavLinkStyled>
+      <WelcomeTitle>Welcome, {user.name}</WelcomeTitle>
+      <Button type="button" onClick={handleLogout}>
         Logout
-      </button>
-    </div>
+      </Button>
+    </Wrapper>
   );
 };

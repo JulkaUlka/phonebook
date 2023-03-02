@@ -19,7 +19,7 @@ export function ContactList() {
           return (
             <Item key={id}>
               <p>
-                <b>{name}:</b>{' '}
+                <b>{name}: </b>{' '}
               </p>{' '}
               <p>{number}</p>
               <Button onClick={() => handleDelete(id)}>Delete</Button>

@@ -7,6 +7,8 @@ import { ContactForm } from 'components/ContactForm /ContactForm ';
 import { ContactList } from 'components/ContactList/ContactList';
 import { Filter } from 'components/Filter/Filter';
 import { Loader } from 'components/Loader/Loader';
+import { Title, Block } from './Contacts.styled';
+
 
 function Contacts() {
   const isLoading = useSelector(getIsloading);
@@ -16,13 +18,13 @@ function Contacts() {
   }, [dispatch]);
 
   return (
-    <>
+    <Block>
       {isLoading && <Loader />}
-      <h2>Contact-list</h2>
+      <Title>Contact list:</Title>
       <ContactForm />
       <Filter />
       <ContactList />
-    </>
+    </Block>
   );
 }
-export default Contacts;
+export default Contacts; 
