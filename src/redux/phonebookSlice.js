@@ -1,5 +1,5 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
-import { addContact, deleteContact, getContacts } from './operations';
+import { addContact, deleteContact, getContacts, updateContact } from './operations';
 
 const initialState = {
   items: [],
@@ -7,11 +7,11 @@ const initialState = {
   error: null,
 };
 const contactSlice = createSlice({
-  // Имя слайса
+ 
   name: 'contacts',
-  // Начальное состояние редюсера слайса
+
   initialState,
-  // Объект редюсеров
+  
   extraReducers: builder =>
     builder
 
@@ -27,11 +27,18 @@ const contactSlice = createSlice({
         state.items = [payload, ...state.items];
         state.isLoading = false;
       })
+      .addCase(updateContact.fulfilled, (state, action) => {
+       state.items = state.items.map(el =>
+          el.id === action.payload.id ? action.payload : el
+        );
+        state.isLoading = false;
+      })
       .addMatcher(
         isAnyOf(
           getContacts.rejected,
           deleteContact.rejected,
-          addContact.rejected
+          addContact.rejected,
+          updateContact.rejected
         ),
         (state, { payload }) => {
           state.isLoading = false;
@@ -41,7 +48,8 @@ const contactSlice = createSlice({
         isAnyOf(
           getContacts.pending,
           deleteContact.pending,
-          addContact.pending
+          addContact.pending,
+          updateContact.pending
         ),
         (state) => {
           state.isLoading = true;

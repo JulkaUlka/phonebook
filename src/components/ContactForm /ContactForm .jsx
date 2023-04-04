@@ -1,8 +1,10 @@
 import { useDispatch, useSelector } from 'react-redux'; 
 import { useState } from 'react';
 import { addContact } from 'redux/operations';
-import { Button, Input, Form, Label, ImPhoneStyled, ImUserPlusStyled } from './ContactForm .styled';
+import { Input, Form, Label, ImPhoneStyled, ImUserPlusStyled } from './ContactForm .styled';
+import { Button } from 'components/ContactList/ContactList.styled';
 import { selectContacts } from 'redux/selectors';
+import { FiUserPlus } from "react-icons/fi";
 
 export function ContactForm({ onSubmit }) { 
   const contacts = useSelector(selectContacts);
@@ -49,6 +51,7 @@ export function ContactForm({ onSubmit }) {
           value={name}
           type="text"
           name="name"
+          placeholder='Angelina Jolie'
           pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
           title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
           required
@@ -62,10 +65,11 @@ export function ContactForm({ onSubmit }) {
           name="number"
           pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
           title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+          placeholder='+380661112233'
           required
         />
       
-      <Button type="submit">Add</Button>
+      <Button className="selected" type="submit"><FiUserPlus/></Button>
     </Form>
   );
 }

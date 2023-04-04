@@ -18,10 +18,16 @@ export const HeaderWrapper = styled.div`
 
 export const NavLinkStyled = styled(NavLink)`
   color: black;
-  font-size: 20px;
+  font-size: 15px;
   font-weight: 700;
   text-transform: uppercase;
   text-decoration: none;
+  
+@media (min-width: 768px){
+  font-size: 20px;
+  font-weight: 700;
+}
+
   &:hover,
   &:focus {
     color: orange;

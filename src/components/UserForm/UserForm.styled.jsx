@@ -2,11 +2,14 @@ import styled from 'styled-components';
 
 export const StyledForm = styled.form`
   background: #fff;
-  padding: 4em 4em 2em;
+  padding: 2em 2em 2em;
   max-width: 400px;
   margin: 50px auto 0;
   box-shadow: 0 0 1em #222;
   border-radius: 2px;
+  @media (min-width:768px){
+    padding: 4em 4em 2em;
+  }
 
   .form-title {
     margin: 0 0 50px 0;
@@ -48,9 +51,13 @@ export const Input = styled.input`
   margin: 0;
   background: #fff;
   border: 1px solid #dbdbdb;
-  font-size: 1.6em;
+  font-size: 0.8em;
   padding: 0.8em 0.5em;
   border-radius: 2px;
+  @media (min-width: 768px) {
+    font-size: 1.6em;
+  }
+
 `;
 export const Button = styled.button`
   background: green;
