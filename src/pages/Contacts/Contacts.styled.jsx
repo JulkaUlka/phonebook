@@ -10,7 +10,11 @@ export const Block = styled.div`
     `;
 export const Title = styled.h2`
     font-weight: 400;
-    font-size: 48;
+    font-size: 25px;
     text-align: center;
     display: block;
+    @media (min-width: 768px) {
+        font-size: 32px;  
+    }
+
     `;

@@ -35,7 +35,7 @@ export const Floatlabel = styled.label`
   display: inline-block;
   padding: 4px 10px;
   font-weight: 400;
-  background-color: rgba(255, 255, 255, 0);
+  background-color: transparent;
   @include transition(color 0.3s, top 0.3s, background-color 0.8s);
   &.floatLabel {
     top: -11px;
@@ -51,7 +51,7 @@ export const Input = styled.input`
   margin: 0;
   background: #fff;
   border: 1px solid #dbdbdb;
-  font-size: 0.8em;
+  font-size: 1.2em;
   padding: 0.8em 0.5em;
   border-radius: 2px;
   @media (min-width: 768px) {
